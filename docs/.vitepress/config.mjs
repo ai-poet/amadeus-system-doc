@@ -17,7 +17,7 @@ export default defineConfig({
         items: [
           { text: '概述', link: '/tutorial_overview' },
           { text: '所需模块', link: '/tutorial_modules' },
-          { text: 'LLM', link: '/tutorial_ai' },
+          { text: 'Claude 3.5', link: '/tutorial_ai' },
           { text: 'Mem0', link: '/tutorial_mem0' },
           { text: 'Groq', link: '/tutorial_groq' },
           { text: '部署方法', link: '/tutorial_details' }
@@ -34,7 +34,7 @@ export default defineConfig({
         text: 'RoadMap',
         items: [
           { text: 'RoadMap', link: '/roadmap' },
-          { text: '广告位', link: '/roadmap' },
+          { text: '广告位', link: '/ad' },
         ]
       }
     ],
