@@ -1,85 +1,40 @@
-# 这是LLM
+# LLM API服务接入说明
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+我们提供两种 LLM API 接入方案，均支持与官方完全相同的接口格式，可以无缝对接所有支持 LLM 的应用程序。
 
-## Syntax Highlighting
+## API调用方案
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+### 方案一：使用 AIHubMix（推荐）
 
-**Input**
+通过 [AIHubMix](https://aihubmix.com?aff=6zS4) 进行API调用是我们推荐的首选方案：
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
+- 优势：
+  - 原价调用，无需额外费用
+  - 支持全系列模型
+  - 接口格式与官方完全一致
+  - 即开即用，无需等待
+  - 支持多种支付方式
+  - 技术支持响应快速
 
-**Output**
+使用步骤：
+1. 访问 [AIHubMix](https://aihubmix.com?aff=6zS4)
+2. 注册/登录账号
+3. 充值并获取API密钥
+4. 将官方 API 地址替换为 AIHubMix 提供的地址即可使用
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
+### 方案二：使用 Amadeus API Center
 
-## Custom Containers
+通过 `api.amadeus-web.top` 进行调用：
 
-**Input**
-
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
+- 特点：
+  - 提供调用优惠价格
+  - 支持全系列模型
+  - 接口格式与官方完全一致
+  
+使用条件：
+1. 联系我开通权限
+2. 预存足够的调用额度
 
 ::: warning
-This is a warning.
+使用方案二需要等待开通。如果您是新用户，且希望立刻能够上手使用，建议使用方案一。
 :::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
