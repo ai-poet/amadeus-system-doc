@@ -1,85 +1,49 @@
-# 这是所需模块
+# 项目所需材料
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+本项目需要以下服务和账号支持才能完整运行。请在开始部署之前确保您已经准备好所有必需的材料。
 
-## Syntax Highlighting
+## 服务器要求
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-
-## Custom Containers
-
-**Input**
-
-```md
-::: info
-This is an info box.
+::: tip 以下选择其一即可
+- 一个日本地区的 VPS 服务器
+  - 推荐配置：1核1G以上
+  - 带宽：最低10Mbps
+  - 系统：Ubuntu 20.04 或更新版本
+- 一个 Zeabur 账号
+  - 用于部署 WebSocket 服务器
+  - 可以获得更好的延迟体验
 :::
 
-::: tip
-This is a tip.
+## 必需的 API 服务
+
+### 1. Claude 3.5 和 OpenAI API
+- 有效的 API Key和端点
+
+### 2. Groq API
+- 用于语音识别服务
+- 有效的 Groq 账号
+- API Key
+- 免费调用频次：20次/min
+
+### 3. Mem0 API
+- 用于记忆存储服务
+- 有效的 Mem0 账号
+- API Key
+
+## 注意事项
+
+::: warning 重要提醒
+1. 所有 API Key 请妥善保管，不要泄露
+2. 及时关注 API 额度使用量
+3. 确保服务器能够稳定访问这些 API
 :::
 
-::: warning
-This is a warning.
+::: tip 成本估算
+基于普通用户的使用频率，预计每月总成本在：
+- API 费用：$50-100
+- 服务器费用：$5-20
 :::
 
-::: danger
-This is a dangerous warning.
-:::
+## 可选组件
 
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+- 域名和SSL证书（用于对外HTTPS访问，使用Zeabur则不需要）
