@@ -1,85 +1,113 @@
-# 这是介绍
+# Amadeus System 系统概述
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+本项目脱胎于《命运石之门 0》中的 Amadeus System，是一个突破性的多模态 AI 角色扮演系统。通过整合最先进的 AI 技术，我们致力于将虚拟角色完美还原为可交互的数字形态。无论是动漫角色、游戏人物，还是其他任何你梦想中的角色，都可以通过本系统实现真实的对话和情感交互。
 
-## Syntax Highlighting
+## 项目愿景
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+通过结合语音识别、自然语言处理、情感分析等多项 AI 技术，我们打造了一个能够：
+- 精确还原角色性格和说话方式
+- 实现自然流畅的实时对话
+- 具备情感理解和表达能力
+- 持续学习和记忆与用户的互动
 
-**Input**
+## 系统架构
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
 ```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-
-## Custom Containers
-
-**Input**
-
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
+                     +----------------------+
+                     |      客户端          |
+                     | (用户界面/交互层)     |
+                     +----------+-----------+
+                                ↕
+                     +----------+-----------+
+                     |  WebSocket 服务器    |
+                     +----------+-----------+
+                          ↗            ↖
+   +------------------+---+----+------+------------------+
+   |                  |        |      |                  |
++--+---+        +----+----+   |  +---+-------+    +-----+-----+
+|语音  |        |         |   |  |           |    |           |
+|输入  +------->| Claude  |<--+--+  GPT-4o   |<-->|   Mem0    |
+|模块  |        |  3.5    |      |   mini    |    |           |
++--+---+        +----+----+      +-----------+    +-----------+
+   |                 |
+   |                 v
+   |            +----+----+
+   |            |  语音   |
+   +----------->|  输出   |
+                |  模块   |
+                +----+----+
+                     |
+          +----------+-----------+
+          |                      |
+     输出音频                 情感分析
+          |                      |
+          v                      v
+    [通过 WS 返回]         [通过 WS 返回]
+          |                      |
+          +----------------------+
+                     |
+                     ↓
+              实时返回给客户端
 ```
 
-**Output**
+## 核心组件说明
 
-::: info
-This is an info box.
-:::
+### 1. 通信层
+- 基于 WebSocket 的实时双向通信
+- 确保角色反应的即时性和自然度
+- 支持持续性对话流
 
-::: tip
-This is a tip.
-:::
+### 2. 语音处理模块
+- **Groq Whisper**: 精准的语音识别，捕捉用户的每一句话
+- **Fish Audio**: 高质量的音频处理，确保对话的流畅性
+- 实时语音互动，营造真实的交谈体验
 
-::: warning
-This is a warning.
-:::
+### 3. AI 处理核心
+- **Claude 3.5**: 
+  - 负责角色对话的生成和处理
+  - 确保回复符合角色设定
+  - 维持对话的连贯性和逻辑性
+  
+- **GPT-4o mini**:
+  - 深度的情感分析和理解
+  - 角色记忆的管理和调用
+  - 主动话题引导和互动
+  - 复杂场景的理解和响应
 
-::: danger
-This is a dangerous warning.
-:::
+### 4. 记忆系统
+- 基于 Mem0 的深度记忆存储
+- 记录并学习与用户的互动历史
+- 构建角色专属的记忆数据库
+- 实现类似人类的记忆检索和联想
 
-::: details
-This is a details block.
-:::
+## 特色功能
 
-## More
+1. **沉浸式角色扮演**
+   - 精确的角色性格还原
+   - 符合人设的对话风格
+   - 情境感知的互动体验
 
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+2. **情感智能系统**
+   - 细腻的情感理解能力
+   - 个性化的情感表达
+   - 根据场景调整互动策略
+
+3. **主动式互动**
+   - 基于角色设定的主动对话
+   - 智能话题延展
+   - 自然的对话节奏把控
+
+4. **进化式记忆**
+   - 持续成长的互动记忆
+   - 个性化的用户关系构建
+   - 长期记忆的积累与应用
+
+## 技术栈
+- React 客户端界面
+- WebSocket 实现实时通信
+- Groq Whisper 提供高精度语音识别
+- Claude 3.5 负责角色对话生成
+- GPT-4o mini 处理其它认知任务
+- Fish Audio 确保音频质量
+- Mem0 提供记忆存储系统
+- Node Express 提供 WS 和接口 服务
