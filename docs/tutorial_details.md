@@ -1,6 +1,6 @@
 # 部署方法
 
-## 使用 Zeabur 部署
+## 使用 Zeabur 一键部署
 
 [![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/LMSUDW)
 
