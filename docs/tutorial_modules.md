@@ -28,6 +28,10 @@
 - 用于记忆存储服务
 - 有效的 Mem0 账号和API Key
 
+### 4. Fish Audio API
+- 用于语音克隆服务
+- 有效的 Fish Audio 账号和API Key
+
 ## 注意事项
 
 ::: warning 重要提醒
