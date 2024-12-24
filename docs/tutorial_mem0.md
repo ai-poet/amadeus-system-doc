@@ -1,85 +1,38 @@
-# 这是mem0
+# 介绍
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+[Mem0](https://mem0.ai)（发音为"mem-zero"）通过智能记忆层增强AI助手和代理的功能，实现个性化的AI交互。Mem0能够记住用户偏好，适应个人需求，并随时间不断改进.
 
-## Syntax Highlighting
+### 核心功能
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+- **多层次记忆**：用户、会话和AI代理的记忆保留
+- **自适应个性化**：基于交互持续改进
+- **开发者友好的API**：易于集成到各种应用
+- **跨平台一致性**：在各种设备上保持统一行为
+- **托管服务**：无忧的托管解决方案
 
-**Input**
+### Mem0如何工作？
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
+Mem0利用混合数据库方法来管理和检索AI代理和助手的长期记忆。每个记忆都与唯一标识符（如用户ID或代理ID）相关联，使Mem0能够组织和访问特定个人或上下文的记忆。
 
-**Output**
+当使用add()方法向Mem0添加消息时，系统会提取相关事实和偏好，并将其存储在多个数据存储中：向量数据库、键值数据库和图形数据库。这种混合方法确保不同类型的信息以最有效的方式存储，使后续搜索快速且有效。
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
+当AI代理或LLM需要回忆记忆时，它使用search()方法。Mem0随后在这些数据存储中执行搜索，从每个源检索相关信息。这些信息然后通过评分层，根据相关性、重要性和时效性评估其重要程度。这确保只有最个性化和有用的上下文被呈现。
 
-## Custom Containers
+检索到的记忆可以根据需要附加到LLM的提示中，从而增强其响应的个性化和相关性。
 
-**Input**
+### 使用场景
 
-```md
-::: info
-This is an info box.
-:::
+Mem0为组织和个人提供增强功能：
 
-::: tip
-This is a tip.
-:::
+- **AI助手和代理**：带有似曾相识感的流畅对话
+- **个性化学习**：定制内容推荐和进度跟踪
+- **客户支持**：具有用户偏好记忆的上下文感知援助
+- **医疗保健**：患者病史和治疗计划管理
+- **虚拟伴侣**：通过对话记忆建立更深层次的用户关系
+- **生产力**：基于用户习惯和任务历史的流线型工作流程
+- **游戏**：反映玩家选择和进度的自适应环境
 
-::: warning
-This is a warning.
-:::
+## 开始使用
 
-::: danger
-This is a dangerous warning.
-:::
+在[这里](https://app.mem0.ai/)一键使用托管平台的Mem0，这个托管解决方案提供自动更新、高级分析和专门支持，注册并创建Mem0的API Key，这是本项目Docker镜像的环境变量之一。
 
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).

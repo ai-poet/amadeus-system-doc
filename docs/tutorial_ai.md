@@ -6,10 +6,10 @@
 
 ### 方案一：使用 AIHubMix（推荐）
 
-通过 [AIHubMix](https://aihubmix.com?aff=6zS4) 进行API调用是我们推荐的首选方案：
+通过 [AIHubMix](https://aihubmix.com?aff=6zS4) 进行AI接口调用是推荐的首选方案：
 
 - 优势：
-  - 原价调用，无需额外费用
+  - 原价调用，无需额外费用，按量付费
   - 支持全系列模型
   - 接口格式与官方完全一致
   - 即开即用，无需等待
@@ -19,22 +19,18 @@
 使用步骤：
 1. 访问 [AIHubMix](https://aihubmix.com?aff=6zS4)
 2. 注册/登录账号
-3. 充值并获取API密钥
-4. 将官方 API 地址替换为 AIHubMix 提供的地址即可使用
+3. 充值并创建API令牌, API令牌是本项目Docker镜像的环境变量之一
+4. AIHubMix 的 API 地址(https://api.aihubmix.com)是本项目Docker镜像的环境变量之一
 
 ### 方案二：使用 Amadeus API Center
 
 通过 `api.amadeus-web.top` 进行调用：
 
 - 特点：
-  - 提供调用优惠价格
+  - 提供更优惠的调用价格
   - 支持全系列模型
   - 接口格式与官方完全一致
-  
-使用条件：
-1. 联系我开通权限
-2. 预存足够的调用额度
 
 ::: warning
-使用方案二需要等待开通。如果您是新用户，且希望立刻能够上手使用，建议使用方案一。
+方案二正在建设中....如果您是新用户，且希望立刻能够上手使用，建议使用方案一。
 :::

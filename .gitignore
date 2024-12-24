@@ -2,7 +2,6 @@
 .DS_Store
 Thumbs.db
 desktop.ini
-
 # 编辑器和IDE文件
 .idea/
 .vscode/
@@ -13,6 +12,7 @@ desktop.ini
 # 依赖目录
 node_modules/
 venv/
+cache/
 __pycache__/
 *.py[cod]
 *.so
