@@ -32,3 +32,60 @@
 - 确保你的项目符合 Zeabur 的部署要求
 - 如果你需要自定义域名，可以在 Zeabur 的控制面板中进行设置
 - 建议查看 [Zeabur 的官方文档](https://zeabur.com/docs) 获取更多部署相关信息
+
+## 使用 Docker Compose 部署
+
+如果你想在自己的服务器上部署，可以使用 Docker Compose 进行部署。
+
+### 准备工作
+
+1. 确保你的服务器已安装 [Docker](https://docs.docker.com/get-docker/) 和 [Docker Compose](https://docs.docker.com/compose/install/)
+2. 准备好所有必需的环境变量（参考上方环境变量配置说明）
+
+### Docker Compose 配置
+
+创建 `docker-compose.yml` 文件，内容如下：
+
+```yaml
+version: '3'
+services:
+  container:
+    image: ghcr.io/ai-poet/amadeus-system-new-alpha
+    ports:
+      - "3002:3002"  # 服务端口
+    environment:
+      - VITE_AUTH_API_TOKEN=${VITE_AUTH_API_TOKEN}
+      - VITE_APP_DEFAULT_USERNAME=${VITE_APP_DEFAULT_USERNAME}
+      - VITE_APP_LOGIN_PASSWORD=${VITE_APP_LOGIN_PASSWORD}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_API_BASE_URL=${OPENAI_API_BASE_URL}
+      - OPENAI_API_MODEL=${OPENAI_API_MODEL}
+      - AI_PROMPT=${AI_PROMPT}
+      - TIMEOUT_MS=${TIMEOUT_MS:-60000}
+      - WebSearchKey=${WebSearchKey}
+      - FISH_AUDIO_TOKEN=${FISH_AUDIO_TOKEN}
+      - WHISPER_API_TOKEN=${WHISPER_API_TOKEN}
+      - WHISPER_API_ENDPOINT=${WHISPER_API_ENDPOINT}
+      - VOICE_ID=${VOICE_ID}
+      - MEM_KEY=${MEM_KEY}
+    restart: unless-stopped
+    networks:
+      - amadeus-network
+    volumes:
+      - ./logs:/app/service/logs  # 日志持久化存储
+networks:
+  amadeus-network:
+    driver: bridge
+```
+
+### 部署步骤
+
+1. 创建 `.env` 文件，填入所需的环境变量
+2. 在 `docker-compose.yml` 所在目录运行：
+```bash
+docker-compose up -d
+```
+3. 服务将在后台启动，可以通过以下命令查看日志：
+```bash
+docker-compose logs -f
+```
