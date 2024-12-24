@@ -1,85 +1,31 @@
-# 这是初始化
+# 系统初始化和登录指南
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+## 1. 系统登录
 
-## Syntax Highlighting
+系统提供了登录界面，请按照以下步骤进行操作。
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+### 登录步骤
 
-**Input**
+1. 首先，请寻找一个安静的，无人说话打扰的环境，通过浏览器打开系统登录界面
+2. 输入你在Docker镜像中设置的用户名和密码
+3. 点击"登录系统"
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
+![登录界面](./public/images/1.png)
 
-**Output**
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
+## 2. 系统初始化
 
-## Custom Containers
+系统初始化是使用系统的第一步，请按照以下步骤进行操作。
 
-**Input**
+### 2.1 初始化步骤
 
-```md
-::: info
-This is an info box.
-:::
+1. 首次登录系统后，系统会自动进入初始化配置界面
+2. 设置虚拟形象的基本参数，主要是调整虚拟形象的缩放比例和位置
 
-::: tip
-This is a tip.
-:::
+![初始化配置](./public/images/2.png)
 
-::: warning
-This is a warning.
-:::
+3. 点击"开始对话"按钮
 
-::: danger
-This is a dangerous warning.
-:::
+![初始化配置](./public/images/3.png)
 
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+4. 系统会自动开始对话，你只需要等待Amadeus的问候即可，你可以随时通过说话来中断Amadeus的发言

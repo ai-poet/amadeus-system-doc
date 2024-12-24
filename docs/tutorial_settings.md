@@ -1,85 +1,59 @@
-# 这是介绍
+# 系统工具栏说明
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+## 工具栏功能介绍
 
-## Syntax Highlighting
+系统工具栏位于界面右侧，包含了与 Amadeus 交互所需的所有功能按钮。
 
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
+![工具栏界面](./public/images/4.png)
 
-**Input**
+### 工具栏按钮说明
 
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
+从上到下依次为：
 
-**Output**
+1. **麦克风按钮**
+   - 控制麦克风的开启和关闭
+   - 开启状态下可以与 Amadeus 进行语音对话
+   - 关闭状态下 Amadeus 将无法听到你的声音
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
+2. **摄像头按钮**
+   - 控制摄像头的开启和关闭
+   - 开启后，Amadeus 将能够观察摄像头前的情况
+   - 关闭状态下 Amadeus 将无法看到摄像头画面
 
-## Custom Containers
+3. **对话记录按钮**
+   - 查看与 Amadeus 的历史对话记录
+   - 可以回顾之前的交互内容
 
-**Input**
+4. **设置按钮**
+   - 打开系统设置界面
+   - 可以调整系统参数和偏好设置
 
-```md
-::: info
-This is an info box.
+5. **退出按钮**
+   - 安全退出系统
+   - 点击后将结束与 Amadeus 的对话
+
+::: tip 提示
+建议在使用前先检查麦克风和摄像头是否正常工作。
 :::
 
-::: tip
-This is a tip.
+::: warning 注意
+首次使用时，浏览器可能会请求麦克风和摄像头的使用权限，请选择"允许"以确保功能正常使用。
 :::
 
-::: warning
-This is a warning.
+## 使用建议
+
+1. **语音交互**
+   - 确保在安静的环境中使用麦克风
+   - 说话语速适中，语气自然
+
+2. **视觉交互**
+   - 保持摄像头画面清晰
+   - 确保光线充足
+
+3. **系统设置**
+   - 根据个人需求调整各项参数
+   - 定期检查设置是否符合使用习惯
+
+::: info 补充说明
+如果对话过程中遇到异常或者阻塞，可以尝试刷新页面或重新登录系统
 :::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
