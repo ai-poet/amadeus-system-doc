@@ -31,7 +31,7 @@ Groq平台提供个人免费的API密钥，这里我们需要这个API密钥调�
 2. 注册/登录Groq账号
 3. 点击"Create API KEY"按钮
 4. 为你的API Key命名
-5. 在弹出的对话框中复制API Key并保存，API Key是本项目Docker镜像的环境变量之一,Groq 的 API 地址(https://api.groq.com)是本项目Docker镜像的环境变量之一
+5. 在弹出的对话框中复制API Key并保存，API Key是本项目Docker镜像的环境变量之一,Groq 的 API 地址(https://api.groq.com/openai)是本项目Docker镜像的环境变量之一
 
 ::: warning
 请妥善保管你的API Key，不要泄露给他人。
@@ -39,4 +39,4 @@ Groq平台提供个人免费的API密钥，这里我们需要这个API密钥调�
 
 ## 替代方案
 
-如果你觉得使用代理注册Groq过于麻烦，本项目[章节LLM](/tutorial_ai.html)中介绍的AIhubMix服务端点和API Key同样可以调用Whisper模型进行语音识别。虽然识别速度不如直接使用Groq快，但在无法访问Groq的情况下也是一个可行的替代方案。
+如果你觉得使用代理注册Groq过于麻烦，本项目[章节LLM](/tutorial_ai.html)中介绍的AIhubMix服务端点和API Key同样可以调用Whisper模型进行语音识别，但是需要注意识别速度不如直接使用Groq快，只是在无法访问Groq的情况下的替代方案，依然推荐使用Groq进行语音识别。
