@@ -18,7 +18,6 @@ __pycache__/
 *.so
 
 # 构建输出
-dist/
 build/
 *.egg-info/
 *.egg
