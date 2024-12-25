@@ -17,7 +17,7 @@
 | 环境变量 | 说明 |
 |---------|------|
 | `VITE_AUTH_API_TOKEN` | 用于后端鉴权，请填写一个随机字符串，长度至少为8位 |
-| `VITE_APP_DEFAULT_USERNAME` | 用于前端登录系统鉴权的用户名，以及让Amadeus识别你的身份 |
+| `VITE_APP_DEFAULT_USERNAME` | 用于前端登录系统鉴权的用户名，用于让Amadeus识别你的身份 |
 | `VITE_APP_LOGIN_PASSWORD` | 用于前端登录系统鉴权的密码 |
 | `OPENAI_API_KEY` | 调用LLM的API Key，请填写章节LLM中获取的API令牌 |
 | `OPENAI_API_BASE_URL` | 调用LLM的API端点，请填写章节LLM中获取的API端点 |
