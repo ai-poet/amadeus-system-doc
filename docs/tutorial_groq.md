@@ -11,7 +11,7 @@ Groq是一家美国AI芯片公司，专注设计高性能的AI处理器，目前
 1. 访问Groq官网 https://groq.com/
 
 ::: tip
-需要使用代理工具，代理到美国或者日本节点访问，比如[clash](https://github.com/clash-verge-rev/clash-verge-rev)。
+需要使用代理工具，代理到美国或者日本节点访问，比如[clash](https://github.com/clash-verge-rev/clash-verge-rev)，需要使用谷歌账户注册(使用Github登录可能会被拒绝，感谢@labmem no.1219树灵藤蔓的反馈)
 :::
 
 2. 成功访问后可以看到Groq的主界面
