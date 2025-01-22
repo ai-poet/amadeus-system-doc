@@ -28,6 +28,8 @@
 | `WHISPER_API_ENDPOINT` | 调用Whisper的API端点，请填写章节Groq中获取的API端点 |
 | `VOICE_ID` | 牧濑红莉栖的Fish Audio语音ID为4c0b21b2ddb247d8ba45a1c1e84afe64 |
 | `MEM_KEY` | 用于调用Mem0的API Key，请填写章节Mem0中获取的API Key |
+| `VOICE_OUTPUT_LANGUAGE` | 控制AI语音输出的语种，可填 ja zh en 对应日语，汉语，英语三种类型，不填默认为ja |
+| `TEXT_OUTPUT_LANGUAGE` | AI文字输出的语种，可填 ja zh en 对应日语，汉语，英语三种类型，不填默认为zh |
 
 - 确保你的项目符合 Zeabur 的部署要求
 - 如果你需要自定义域名，可以在 Zeabur 的控制面板中进行设置
@@ -66,6 +68,8 @@ services:
       - WHISPER_API_ENDPOINT=${WHISPER_API_ENDPOINT}
       - VOICE_ID=${VOICE_ID}
       - MEM_KEY=${MEM_KEY}
+      - VOICE_OUTPUT_LANGUAGE=${VOICE_OUTPUT_LANGUAGE}
+      - TEXT_OUTPUT_LANGUAGE=${TEXT_OUTPUT_LANGUAGE}
     restart: unless-stopped
     networks:
       - amadeus-network
