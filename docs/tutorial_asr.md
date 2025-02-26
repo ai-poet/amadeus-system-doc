@@ -12,7 +12,7 @@
 ![硅基流动实名认证](./public/images/7.png)
 ![硅基流动密钥获取](./public/images/8.png)
 
-硅基流动的API密钥可以作为本项目Docker镜像的环境变量，为国内用户提供便捷的语音识别服务。
+硅基流动的API密钥可以作为本项目Docker镜像的环境变量，然后硅基流动API的地址(https://api.siliconflow.cn)可以作为本项目Docker镜像的环境变量，为国内用户提供便捷的语音识别服务。
 
 ## Groq API获取（国外用户首选）
 
