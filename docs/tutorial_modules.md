@@ -19,10 +19,9 @@
 ### 1. Claude 3.5 和 OpenAI API
 - 有效的 API Key和端点
 
-### 2. Groq API
+### 2. Groq API(国外用户首选) 或者硅基流动 API(国内用户首选)
 - 用于语音识别服务
-- 有效的 Groq 账号和API Key
-- 免费调用频次：20次/min
+- 有效的账号和API Key
 
 ### 3. Mem0 API
 - 用于记忆存储服务
