@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Amadeus System 私有化部署指南"
   text: "多模态AI伴侣系统"
-  tagline: 融合Live2D、ASR、Claude 3.5、和Mem0记忆系统
+  tagline: 融合Live2D、ASR、Claude 3.7、和Mem0记忆系统
   actions:
     - theme: brand
       text: 教程
