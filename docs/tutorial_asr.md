@@ -1,18 +1,40 @@
 # 语音识别服务使用教程
 
-## 硅基流动API获取（国内用户首选）
+## 使用Zeabur部署模板内置语音识别服务（国内用户推荐）
 
-硅基流动是国内用户获取AI服务的便捷途径，无需科学上网即可使用。
+如果后续使用Zeabur一键部署的用户，Zeabur部署模板里已经内置了语音识别服务地址和API密钥，无需再自行填写。
 
-1. 首先去硅基流动注册一个账号
-2. 注册好账号后，点击左侧的"实名"，完成实名认证
-3. 然后点击"密钥"（密钥描述没有影响）
-4. 新建完成后点击指向3的字符串即可完成复制
+::: tip
+此语音识别服务为个人搭建，仅供测试使用，不保证服务的稳定性和可用性。如需稳定的ASR服务，建议自行部署SenseVoice Small语音识别服务。
+:::
 
-![硅基流动实名认证](./public/images/8.png)
-![硅基流动密钥获取](./public/images/7.png)
+## 自行部署SenseVoice Small
 
-硅基流动的API密钥可以作为本项目Docker镜像的环境变量，然后硅基流动API的地址(https://api.siliconflow.cn)可以作为本项目Docker镜像的环境变量，为国内用户提供便捷的语音识别服务。
+如果您希望自行部署SenseVoice Small语音识别服务，可以使用以下Docker Compose文件在您的服务器上快速部署：
+
+```yaml
+version: '3'
+
+services:
+  sensevoice:
+    image: registry.cn-hangzhou.aliyuncs.com/lucklittleboy/sensevoice-oneapi:1.0
+    container_name: sensevoice
+    ports:
+      - "8000:8000"
+    environment:
+      - DEVICE_TYPE=cpu
+    restart: unless-stopped
+```
+
+部署步骤：
+1. 在服务器上创建一个名为`docker-compose.yml`的文件，将上述内容复制进去
+2. 在该文件所在目录执行`docker-compose up -d`命令启动服务
+3. 服务启动后，可通过`http://您的服务器IP:8000`访问API服务
+4. 将此地址配置为本项目Docker镜像的环境变量即可使用
+
+::: tip
+此Docker镜像默认使用CPU进行推理，如果您的服务器有GPU，可以将`DEVICE_TYPE`环境变量设置为`cuda:0`以启用GPU加速。
+:::
 
 ## Groq API获取（国外用户首选）
 
