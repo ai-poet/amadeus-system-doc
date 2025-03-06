@@ -36,6 +36,20 @@ services:
 此Docker镜像默认使用CPU进行推理，如果您的服务器有GPU，可以将`DEVICE_TYPE`环境变量设置为`cuda:0`以启用GPU加速。
 :::
 
+## 使用商业语音识别服务
+
+除了自行部署SenseVoice Small，您还可以选择使用商业语音识别服务。商业服务通常提供更高的稳定性、更好的识别准确率以及更强的并发处理能力，适合对服务质量有较高要求的场景。
+
+
+## 使用AIhubmix API
+
+您还可以使用章节LLM中提到的AIhubmix的API端点和密钥来进行语音识别。AIhubmix提供了兼容OpenAI接口的语音识别服务，使用方法如下：
+
+1. 访问AIhubmix官网并注册账号
+2. 在个人中心获取API密钥
+3. 将AIhubmix的API端点和密钥配置为本项目Docker镜像的环境变量，即Whisper_API_ENDPOINT和WHISPER_API_TOKEN
+
+
 ## Groq API获取（国外用户首选）
 
 Groq是一家美国AI芯片公司，专注设计高性能的AI处理器，目前借助自研的AI芯片LPU，每秒能够输出近几百甚至几千个token。同一个问题所需的时间，Groq完全碾压了其他传统的依赖GPU推理的AI推理服务。
