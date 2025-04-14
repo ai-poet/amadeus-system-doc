@@ -1,72 +1,66 @@
-# 语音识别服务使用教程
+# ASR (自动语音识别) 服务
 
-## 使用Zeabur部署模板内置语音识别服务（国内用户推荐）
+本项目使用自动语音识别 (ASR) 技术来将语音转换成文本，支持多种ASR服务。
 
-如果后续使用Zeabur一键部署的用户，Zeabur部署模板里已经内置了语音识别服务地址和API密钥，无需再自行填写。
+## 单机版Whisper部署
 
-::: tip
-此语音识别服务为个人搭建，仅供测试使用，不保证服务的稳定性和可用性。如需稳定的ASR服务，建议自行部署SenseVoice Small语音识别服务。
-:::
+如果你想在本地部署Whisper语音识别服务，可以尝试使用docker镜像`onerahmet/openai-whisper-asr-webservice:latest-gpu`，通过以下步骤部署：
 
-## 自行部署SenseVoice Small
+### 环境要求
 
-如果您希望自行部署SenseVoice Small语音识别服务，可以使用以下Docker Compose文件在您的服务器上快速部署：
+- NVIDIA GPU
+- Docker和Docker Compose
+- 支持CUDA的服务器
+
+### 部署步骤
+
+1. 创建`docker-compose.yml`文件，包含以下内容：
 
 ```yaml
 version: '3'
-
 services:
-  sensevoice:
-    image: registry.cn-hangzhou.aliyuncs.com/lucklittleboy/sensevoice-oneapi:1.0
-    container_name: sensevoice
+  whisper:
+    image: onerahmet/openai-whisper-asr-webservice:latest-gpu
     ports:
-      - "8000:8000"
+      - 9000:9000  # 服务暴露端口
     environment:
-      - DEVICE_TYPE=cpu
+      - ASR_MODEL=base
+      - DEVICE_TYPE=cuda:0  # 如果没有GPU可以设置为cpu
     restart: unless-stopped
+    volumes:
+      - ./audio_data:/tmp  # 音频文件存储目录
 ```
 
-部署步骤：
-1. 在服务器上创建一个名为`docker-compose.yml`的文件，将上述内容复制进去
-2. 在该文件所在目录执行`docker-compose up -d`命令启动服务
-3. 服务启动后，可通过`http://您的服务器IP:8000`访问API服务
-4. 将此地址配置为本项目Docker镜像的环境变量即可使用
+2. 在目录中运行:
+```bash
+docker-compose up -d
+```
 
-::: tip
+3. 测试服务是否运行:
+```bash
+curl http://localhost:9000/health
+```
+
+4. 将此地址配置为ASR服务的API端点
+
 此Docker镜像默认使用CPU进行推理，如果您的服务器有GPU，可以将`DEVICE_TYPE`环境变量设置为`cuda:0`以启用GPU加速。
-:::
 
-## 使用商业语音识别服务
+## AIhubmix提供的ASR服务
 
-除了自行部署SenseVoice Small，您还可以选择使用商业语音识别服务。商业服务通常提供更高的稳定性、更好的识别准确率以及更强的并发处理能力，适合对服务质量有较高要求的场景。
+如果你不想自行部署ASR服务，可以使用AIhubmix提供的API服务：
 
+### 特点
+- 支持高精度语音识别
+- 免去本地部署的麻烦
+- 稳定的API调用
 
-## 使用AIhubmix API
+### 使用方法
 
-您还可以使用章节LLM中提到的AIhubmix的API端点和密钥来进行语音识别。AIhubmix提供了兼容OpenAI接口的语音识别服务，使用方法如下：
+1. 访问[AIhubmix](https://aihubmix.com/)注册账号
+2. 充值API积分
+3. 将AIhubmix的API端点和密钥配置在系统的API配置页面
 
-1. 访问AIhubmix官网并注册账号
-2. 在个人中心获取API密钥
-3. 将AIhubmix的API端点和密钥配置为本项目Docker镜像的环境变量，即Whisper_API_ENDPOINT和WHISPER_API_TOKEN
-
-
-## Groq API获取（国外用户首选）
-
-Groq是一家美国AI芯片公司，专注设计高性能的AI处理器，目前借助自研的AI芯片LPU，每秒能够输出近几百甚至几千个token。同一个问题所需的时间，Groq完全碾压了其他传统的依赖GPU推理的AI推理服务。
-
-目前国内环境下Groq使用起来不是太方便，而且国外很多网络也不能通畅访问Groq。下面教大家一个方法来实现代理访问Groq，从而体验Groq超快速度。
-
-## Groq注册流程
-
-1. 访问Groq官网 https://groq.com/
-
-::: tip
-需要使用代理工具，代理到美国或者日本节点访问，比如[clash](https://github.com/clash-verge-rev/clash-verge-rev)，需要使用谷歌账户注册(使用Github登录可能会被拒绝，感谢@labmem no.1219树灵藤蔓的反馈)
-:::
-
-2. 成功访问后可以看到Groq的主界面
-
-## API密钥限制
+## Groq提供的ASR服务
 
 Groq平台提供个人免费的API密钥，这里我们需要这个API密钥调用它们的Whisper API以获得快速的语音转文本服务：
 
@@ -81,8 +75,12 @@ Groq平台提供个人免费的API密钥，这里我们需要这个API密钥调�
 2. 注册/登录Groq账号
 3. 点击"Create API KEY"按钮
 4. 为你的API Key命名
-5. 在弹出的对话框中复制API Key并保存，API Key是本项目Docker镜像的环境变量之一,Groq 的 API 地址(https://api.groq.com/openai)是本项目Docker镜像的环境变量之一
+5. 在弹出的对话框中复制API Key并保存，登录Amadeus系统后在API配置页面中填入Groq的API密钥和API地址(https://api.groq.com/openai)
 
 ::: warning
 请妥善保管你的API Key，不要泄露给他人。
+:::
+
+::: tip API配置
+无论你选择哪种ASR服务，都需要在Amadeus系统的API配置页面中填写相关的API端点和密钥。系统会保存这些配置，方便后续使用。
 :::

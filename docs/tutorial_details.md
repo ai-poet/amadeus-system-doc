@@ -16,20 +16,13 @@
 
 | 环境变量 | 说明 |
 |---------|------|
-| `VITE_AUTH_API_TOKEN` | 用于后端鉴权，请填写一个随机字符串，长度至少为8位 |
 | `VITE_APP_DEFAULT_USERNAME` | 用于前端登录系统鉴权的用户名，从而让Amadeus识别你的身份 |
 | `VITE_APP_LOGIN_PASSWORD` | 用于前端登录系统鉴权的密码 |
-| `OPENAI_API_KEY` | 调用LLM的API Key，请填写章节LLM中获取的API令牌 |
-| `OPENAI_API_BASE_URL` | 调用LLM的API端点，请填写章节LLM中获取的API端点 |
-| `OPENAI_API_MODEL` | 调用LLM的型号，可以使用claude-3-7-sonnet-20250219或者claude-3-5-sonnet-20241022 |
-| `AI_PROMPT` | 调用LLM的提示词，默认为"命运石之门(steins gate)的牧濑红莉栖(kurisu),一个天才少女,性格傲娇,不喜欢被叫克里斯蒂娜" |
-| `FISH_AUDIO_TOKEN` | 调用Fish Audio的API Key，请填写章节Fish Audio中获取的API Key |
-| `WHISPER_API_TOKEN` | 调用Whisper的API Key，请填写章节ASR中获取的API Key或者API令牌 |
-| `WHISPER_API_ENDPOINT` | 调用Whisper的API端点，请填写章节ASR中获取的API端点 |
-| `VOICE_ID` | 牧濑红莉栖的Fish Audio语音ID为4c0b21b2ddb247d8ba45a1c1e84afe64 |
-| `MEM_KEY` | 用于调用Mem0的API Key，请填写章节Mem0中获取的API Key |
-| `VOICE_OUTPUT_LANGUAGE` | 控制AI语音输出的语种，可填 ja zh en 对应日语，汉语，英语三种类型，不填默认为ja |
-| `TEXT_OUTPUT_LANGUAGE` | AI文字输出的语种，可填 ja zh en 对应日语，汉语，英语三种类型，不填默认为zh |
+| `WEBRTC_API_URL` | WebRTC服务的API转发地址，用于建立实时音视频通信 |
+
+::: info 其他API配置
+其余所需API配置（如OpenAI、Fish Audio、Whisper等）现已移至前端界面填写，用户可以在登录系统后根据需要灵活配置。这种方式更加灵活，避免了重新部署时需要重设环境变量的麻烦。
+:::
 
 - 确保你的项目符合 Zeabur 的部署要求
 - 如果你需要自定义域名，可以在 Zeabur 的控制面板中进行设置
@@ -42,7 +35,7 @@
 ### 准备工作
 
 1. 确保你的服务器已安装 [Docker](https://docs.docker.com/get-docker/) 和 [Docker Compose](https://docs.docker.com/compose/install/)
-2. 准备好所有必需的环境变量（参考上方环境变量配置说明）
+2. 准备好基础环境变量（用户名、密码和WebRTC API地址）
 
 ### Docker Compose 配置
 
@@ -56,20 +49,9 @@ services:
     ports:
       - "3002:3002"  # 服务端口
     environment:
-      - VITE_AUTH_API_TOKEN=${VITE_AUTH_API_TOKEN}
       - VITE_APP_DEFAULT_USERNAME=${VITE_APP_DEFAULT_USERNAME}
       - VITE_APP_LOGIN_PASSWORD=${VITE_APP_LOGIN_PASSWORD}
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - OPENAI_API_BASE_URL=${OPENAI_API_BASE_URL}
-      - OPENAI_API_MODEL=${OPENAI_API_MODEL}
-      - AI_PROMPT=${AI_PROMPT}
-      - FISH_AUDIO_TOKEN=${FISH_AUDIO_TOKEN}
-      - WHISPER_API_TOKEN=${WHISPER_API_TOKEN}
-      - WHISPER_API_ENDPOINT=${WHISPER_API_ENDPOINT}
-      - VOICE_ID=${VOICE_ID}
-      - MEM_KEY=${MEM_KEY}
-      - VOICE_OUTPUT_LANGUAGE=${VOICE_OUTPUT_LANGUAGE}
-      - TEXT_OUTPUT_LANGUAGE=${TEXT_OUTPUT_LANGUAGE}
+      - WEBRTC_API_URL=${WEBRTC_API_URL}
     restart: unless-stopped
     networks:
       - amadeus-network
@@ -82,12 +64,23 @@ networks:
 
 ### 部署步骤
 
-1. 创建 `.env` 文件，填入所需的环境变量
+1. 创建 `.env` 文件，填入所需的基础环境变量：
+```
+VITE_APP_DEFAULT_USERNAME=你的用户名
+VITE_APP_LOGIN_PASSWORD=你的密码
+WEBRTC_API_URL=你的WebRTC API转发地址
+```
+
 2. 在 `docker-compose.yml` 所在目录运行：
 ```bash
 docker-compose up -d
 ```
+
 3. 服务将在后台启动，可以通过以下命令查看日志：
 ```bash
 docker-compose logs -f
 ```
+
+::: tip 前端配置说明
+首次登录系统后，你需要在设置页面中配置各种API服务的密钥和端点。系统会保存这些配置，无需每次登录都重新填写。
+:::

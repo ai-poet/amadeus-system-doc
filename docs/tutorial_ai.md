@@ -19,8 +19,8 @@
 使用步骤：
 1. 访问 [AIHubMix](https://aihubmix.com?aff=6zS4)
 2. 注册/登录账号
-3. 充值并创建API令牌, API令牌是本项目Docker镜像的环境变量之一
-4. AIHubMix 的 API 地址(https://api.aihubmix.com)是本项目Docker镜像的环境变量之一
+3. 充值并创建API令牌
+4. 登录Amadeus系统后，在API配置页面中填入AIHubMix的API地址(https://api.aihubmix.com)和API令牌
 
 ### 方案二：使用 Amadeus API Center
 
@@ -33,4 +33,8 @@
 
 ::: warning
 方案二开始内测，有需要的可以直接通过B站联系我进行内测，名额有限，如果想快速体验建议使用方案一。
+:::
+
+::: tip API配置
+无论你选择哪种LLM服务，系统都会在本地保存你的API配置，无需每次登录都重新填写。你可以随时在设置页面更新这些配置。
 :::
