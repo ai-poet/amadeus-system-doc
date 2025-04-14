@@ -58,7 +58,7 @@ curl http://localhost:9000/health
 
 1. 访问[AIhubmix](https://aihubmix.com/)注册账号
 2. 充值API积分
-3. 将AIhubmix的API端点和密钥配置在系统的API配置页面
+3. 将AIhubmix的API端点和密钥配置在系统的AI配置页面
 
 ## Groq提供的ASR服务
 
@@ -75,12 +75,12 @@ Groq平台提供个人免费的API密钥，这里我们需要这个API密钥调�
 2. 注册/登录Groq账号
 3. 点击"Create API KEY"按钮
 4. 为你的API Key命名
-5. 在弹出的对话框中复制API Key并保存，登录Amadeus系统后在API配置页面中填入Groq的API密钥和API地址(https://api.groq.com/openai)
+5. 在弹出的对话框中复制API Key并保存，登录Amadeus系统后在AI配置页面中填入Groq的API密钥和API地址(https://api.groq.com/openai)
 
 ::: warning
 请妥善保管你的API Key，不要泄露给他人。
 :::
 
-::: tip API配置
-无论你选择哪种ASR服务，都需要在Amadeus系统的API配置页面中填写相关的API端点和密钥。系统会保存这些配置，方便后续使用。
+::: tip AI配置
+无论你选择哪种ASR服务，都需要在Amadeus系统的AI配置页面中填写相关的API端点和密钥。系统会保存这些配置，方便后续使用。
 :::

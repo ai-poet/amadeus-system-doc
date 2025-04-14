@@ -14,15 +14,16 @@
 
 ## 2. 首次登录配置API服务
 
-1. 首次登录系统后，系统会自动进入API配置界面
-2. 配置以下API服务：
+1. 首次登录系统后，系统会进入AI配置界面
+2. 如果不选择使用Zeabur模板中内置的供我测试用的免费AI服务，需要配置以下AI服务：
    - OpenAI/Claude API Key和端点
    - Fish Audio API Key
    - Whisper或其他ASR服务的API Key和端点
    - Mem0 API Key
    - 语音角色和语言偏好设置
 
-![API配置界面](./public/images/api_config.png)
+
+![AI配置界面](./public/images/api_config.png)
 
 3. 所有配置完成后点击"保存配置"
 
@@ -32,7 +33,7 @@
 
 ## 3. 系统初始化
 
-1. API配置完成后，系统会自动进入初始化配置界面
+1. AI配置，填入各种密钥
 2. 设置虚拟形象的基本参数，主要是调整虚拟形象的缩放比例和位置
 
 ![初始化配置](./public/images/2.png)

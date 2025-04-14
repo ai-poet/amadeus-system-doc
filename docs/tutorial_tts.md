@@ -8,14 +8,13 @@
 
 - 体验地址：[https://cloud.siliconflow.cn/playground/text-to-speech/17885302679](https://cloud.siliconflow.cn/playground/text-to-speech/17885302679)
 - API文档：[https://docs.siliconflow.cn/api-reference/audio/create-speech](https://docs.siliconflow.cn/api-reference/audio/create-speech)
-- 效果展示：[https://mp.weixin.qq.com/s/PP5QBx3sGLLK8P1OwkI_bA](https://mp.weixin.qq.com/s/PP5QBx3sGLLK8P1OwkI_bA)
 
 ::: warning 注意
 首次使用需要注册SiliconCloud账号并获取API授权。
 :::
 
 ::: tip Amadeus系统集成
-在Amadeus系统中，你需要在登录后的API配置页面填写CosyVoice2或其他TTS服务的API密钥和配置。系统会保存这些设置，以便在对话中实时生成语音。
+在Amadeus系统中，你需要在登录后的AI配置页面填写CosyVoice2或其他TTS服务的API密钥和配置。系统会保存这些设置，以便在对话中实时生成语音。
 :::
 
 ## 模型特点
@@ -75,7 +74,7 @@ CosyVoice2.0一经发布，部分开发者率先体验后表示，它支持超�
 
 ## 在Amadeus系统中配置
 
-登录Amadeus系统后，在API配置页面，你需要填写以下信息：
+登录Amadeus系统后，在AI配置页面，你需要填写以下信息：
 - TTS服务API密钥
 - 语音ID (已默认填写)
 - 语音输出语言（可选择中文、日语或英语）

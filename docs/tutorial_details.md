@@ -20,8 +20,8 @@
 | `VITE_APP_LOGIN_PASSWORD` | 用于前端登录系统鉴权的密码 |
 | `WEBRTC_API_URL` | WebRTC服务的API转发地址，用于建立实时音视频通信 |
 
-::: info 其他API配置
-其余所需API配置（如OpenAI、Fish Audio、Whisper等）现已移至前端界面填写，用户可以在登录系统后根据需要灵活配置。这种方式更加灵活，避免了重新部署时需要重设环境变量的麻烦。
+::: info 其他AI配置
+其余所需AI配置（如OpenAI、Fish Audio、Whisper等）现已移至前端界面填写，用户可以在登录系统后根据需要灵活配置。这种方式更加灵活，避免了重新部署时需要重设环境变量的麻烦。
 :::
 
 - 确保你的项目符合 Zeabur 的部署要求
