@@ -20,7 +20,7 @@ export default defineConfig({
           { text: 'LLM', link: '/tutorial_ai' },
           { text: 'Mem0', link: '/tutorial_mem0' },
           { text: 'ASR', link: '/tutorial_asr' },
-          { text: 'Fish Audio', link: '/tutorial_fishAudio' },
+          { text: 'TTS', link: '/tutorial_tts' },
           { text: '部署方法', link: '/tutorial_details' }
         ]
       },
