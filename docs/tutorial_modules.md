@@ -10,7 +10,7 @@
   - 带宽：最低10Mbps
   - 系统：Ubuntu 20.04 或更新版本
 - 一个 Zeabur 账号
-  - 用于部署 WebSocket 服务器
+  - 用于部署 WebRTC 服务器
   - 可以获得更好的延迟体验
 :::
 
@@ -30,6 +30,10 @@
 ### 4. Fish Audio API
 - 用于语音克隆服务
 - 有效的 Fish Audio 账号和API Key
+
+### 5. FastRTC
+- 用于实时音视频通信
+- 需要配置相应的信令服务器
 
 ## 注意事项
 
