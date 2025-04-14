@@ -1,6 +1,6 @@
 # 部署方法
 
-## 使用 Zeabur 一键部署(推荐)
+## 使用 Zeabur 一键部署前端(推荐)
 
 [![Deploy to Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/LMSUDW?referralCode=aipoet)
 
@@ -28,7 +28,7 @@
 - 如果你需要自定义域名，可以在 Zeabur 的控制面板中进行设置
 - 建议查看 [Zeabur 的官方文档](https://zeabur.com/docs) 获取更多部署相关信息
 
-## 使用 Docker Compose 部署
+## 使用 Docker Compose 部署前端
 
 如果你想在自己的服务器上部署，可以使用 Docker Compose 进行部署。
 
@@ -84,3 +84,76 @@ docker-compose logs -f
 ::: tip 前端配置说明
 首次登录系统后，你需要在设置页面中配置各种API服务的密钥和端点。系统会保存这些配置，无需每次登录都重新填写。
 :::
+
+## 自行部署WebRTC服务
+
+如果不使用我部署的WebRTC服务，也可以单独部署WebRTC服务。
+
+### Docker方式部署WebRTC
+
+1. 克隆仓库后，进入代码仓库的`service/webrtc`文件夹
+2. 使用Dockerfile构建WebRTC服务镜像：
+
+```bash
+cd service/webrtc
+docker build -t amadeus-webrtc-service .
+```
+
+3. 运行WebRTC服务容器：
+
+```bash
+docker run -d --name amadeus-webrtc \
+  -p 80:80 -p 443:443 -p 3478:3478 -p 5349:5349 -p 49152-65535:49152-65535/udp \
+  amadeus-webrtc-service
+```
+
+### 端口配置要求
+
+部署WebRTC服务时，需要确保服务器以下端口已开放：
+
+- `80`: HTTP通信
+- `443`: HTTPS通信
+- `3478`: STUN/TURN服务（TCP）
+- `5349`: STUN/TURN服务（TLS）
+- `49152-65535`: 媒体流端口范围（UDP）
+
+::: warning 注意
+如果使用云服务提供商（如AWS、阿里云等），请确保在安全组/防火墙设置中开放这些端口。
+:::
+
+### TURN服务器部署
+
+在生产环境中，为了处理复杂网络环境下的音视频穿透问题，通常需要部署TURN服务器。你可以：
+
+1. 自行部署Coturn
+2. 参考[FastRTC部署文档](https://fastrtc.org/deployment/#self-hosting)进行AWS自动化部署
+
+#### 使用AWS自动部署TURN服务器
+
+FastRTC提供了一个自动化脚本，可在AWS上部署TURN服务器：
+
+1. 克隆FastRTC部署仓库
+2. 配置AWS CLI并创建EC2密钥对
+3. 修改参数文件，填入TURN用户名和密码
+4. 运行CloudFormation脚本自动部署
+
+详细步骤请参考[FastRTC的自托管部署指南](https://fastrtc.org/deployment/#self-hosting)。
+
+部署完成后，可在WebRTC服务的代码中填入TURN服务器信息：
+
+```json
+{
+  "iceServers": [
+    {
+      "urls": "turn:你的TURN服务器IP:3478",
+      "username": "你设置的用户名",
+      "credential": "你设置的密码"
+    }
+  ]
+}
+```
+
+::: tip 提示
+正确配置TURN服务器后，即使在复杂的网络环境（如对称NAT、企业防火墙后）也能保证音视频通信的稳定性。
+:::
+
