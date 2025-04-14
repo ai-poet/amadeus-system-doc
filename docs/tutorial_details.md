@@ -87,7 +87,7 @@ docker-compose logs -f
 
 ## 自行部署WebRTC服务
 
-如果不使用我部署的WebRTC服务，也可以单独部署WebRTC服务。
+如果不使用我在Zeabur模板中提供的我自行部署的WebRTC服务，也可以单独自行部署WebRTC服务。
 
 ### Docker方式部署WebRTC
 
