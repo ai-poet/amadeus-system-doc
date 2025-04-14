@@ -141,8 +141,9 @@
         // 全局变量
         let clonedVoiceId = null;
         const apiBaseUrl = 'https://api.siliconflow.cn/v1';
+        const whisperApiUrl = 'https://amadeus-ai-api-2.zeabur.app/v1/audio/transcriptions';
+        const whisperApiToken = 'sk-A6sz1HQ6DpsIjwn_IE3X4PToNOV1Fo5F0r3flrFLT7tJuNkrmaOVo1Sbvzs';
         const defaultModel = 'FunAudioLLM/CosyVoice2-0.5B';
-        const defaultCloneText = '在一无所知中, 梦里的一天结束了，一个新的轮回便会开始';
 
         // DOM 元素
         const tokenInput = document.getElementById('api-token');
@@ -186,7 +187,7 @@
             // 使用默认值或用户输入
             const customName = customNameInput.value.trim() || `my-voice-${new Date().getTime()}`;
 
-            cloneStatus.textContent = '正在处理语音克隆...';
+            cloneStatus.textContent = '正在处理语音识别...';
             cloneStatus.className = 'status';
             cloneButton.disabled = true;
 
@@ -194,14 +195,46 @@
                 // 将音频文件转换为 base64
                 const base64Audio = await fileToBase64(audioFile);
                 
-                // 准备表单数据
+                // 首先进行语音识别
+                cloneStatus.textContent = '正在进行语音识别...';
+                
+                // 准备语音识别的表单数据
+                const whisperFormData = new FormData();
+                whisperFormData.append('file', audioFile);
+                whisperFormData.append('model', 'whisper-large-v3');
+                
+                // 发送语音识别请求
+                const whisperResponse = await fetch(whisperApiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${whisperApiToken}`
+                    },
+                    body: whisperFormData
+                });
+                
+                const whisperData = await whisperResponse.json();
+                
+                if (!whisperResponse.ok) {
+                    throw new Error(whisperData.error?.message || '语音识别失败');
+                }
+                
+                // 获取识别的文本
+                const recognizedText = whisperData.text || '';
+                
+                if (!recognizedText) {
+                    throw new Error('语音识别未返回文本');
+                }
+                
+                cloneStatus.textContent = '语音识别成功，正在进行语音克隆...';
+                
+                // 准备语音克隆的表单数据
                 const formData = new FormData();
                 formData.append('audio', base64Audio);
                 formData.append('model', defaultModel);
                 formData.append('customName', customName);
-                formData.append('text', defaultCloneText);
+                formData.append('text', recognizedText);
 
-                // 发送请求
+                // 发送语音克隆请求
                 const response = await fetch(`${apiBaseUrl}/uploads/audio/voice`, {
                     method: 'POST',
                     headers: {
@@ -223,6 +256,7 @@
                 cloneStatus.textContent = '语音克隆成功!';
                 cloneResult.innerHTML = `
                     <p>语音 ID: <strong>${clonedVoiceId}</strong></p>
+                    <p>识别的文本: <em>${recognizedText}</em></p>
                     <p>已自动填入TTS部分，可直接生成语音</p>
                 `;
                 
