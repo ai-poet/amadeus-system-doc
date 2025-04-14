@@ -10,7 +10,7 @@
 - API文档：[https://docs.siliconflow.cn/api-reference/audio/create-speech](https://docs.siliconflow.cn/api-reference/audio/create-speech)
 
 ::: warning 注意
-首次使用需要注册SiliconCloud账号并获取API授权。
+首次使用需要注册SiliconCloud账号，完成实名认证并获取API授权。
 :::
 
 ::: tip Amadeus系统集成
@@ -80,3 +80,44 @@ CosyVoice2.0一经发布，部分开发者率先体验后表示，它支持超�
 - 语音输出语言（可选择中文、日语或英语）
 
 系统会记住这些配置，使你的虚拟角色能够使用你选择的声音与你交流。
+
+## 语音克隆工具
+
+为了让你的虚拟角色拥有独特的声音，我们提供了一个简便的语音克隆工具。通过上传参考音频，你可以创建自定义语音并获取语音ID，用于配置到Amadeus系统中。
+
+### 使用方法
+
+1. 准备一段清晰的参考音频（最好是单人声、无背景噪音的录音）
+2. 在下方工具中输入你的硅基流动API Token
+3. 上传参考音频并设置自定义名称
+4. 点击"开始语音克隆"按钮，等待处理完成
+5. 获取生成的语音ID，并填入Amadeus系统的AI配置页面
+6. 你还可以在工具中测试生成的语音效果
+
+::: warning 重要提示
+- 语音克隆需要硅基流动平台的API Token，请确保你已注册并获取了Token
+- 生成的语音ID格式通常为：`speech:xxx`，请完整复制到Amadeus系统
+- 为获得最佳效果，参考音频应至少包含10秒以上的清晰人声
+:::
+
+### 语音克隆工具
+
+<div>
+<iframe src="/voice_clone_demo.html" width="100%" height="800px" frameborder="0" style="border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);"></iframe>
+</div>
+
+::: tip 工具加载提示
+如果上方工具未能正确加载，您可以点击[这里](/voice-cloner.html)在新窗口中打开语音克隆工具。
+:::
+
+### 获取语音ID后的配置步骤
+
+1. 成功克隆语音后，复制生成的语音ID（格式如：`FunAudioLLM/CosyVoice2-0.5B:xxx`）
+2. 登录Amadeus系统，进入AI配置页面
+3. 在TTS配置区域填入以下信息：
+   - 硅基流动API Token
+   - 刚才获取的语音ID
+   - 其他可选参数（如语音速度、音频增益等）
+4. 保存配置
+
+完成配置后，你的虚拟角色将使用你克隆的声音进行对话。你可以随时返回此页面，使用不同的参考音频创建新的语音ID，为不同的角色设置不同的声音。
