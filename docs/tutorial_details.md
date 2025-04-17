@@ -49,7 +49,6 @@ services:
       - "3002:3002"  # 服务端口
     environment:
       - VITE_APP_DEFAULT_USERNAME=${VITE_APP_DEFAULT_USERNAME}
-      - VITE_APP_LOGIN_PASSWORD=${VITE_APP_LOGIN_PASSWORD}
       - WEBRTC_API_URL=${WEBRTC_API_URL}
     restart: unless-stopped
     networks:
