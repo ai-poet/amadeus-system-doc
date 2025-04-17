@@ -15,12 +15,7 @@
 ## 2. 首次登录配置API服务
 
 1. 首次登录系统后，系统会进入AI配置界面
-2. 如果不选择使用Zeabur模板中内置的供我测试用的免费AI服务，需要配置以下AI服务：
-   - OpenAI/Claude API Key和端点
-   - Fish Audio API Key
-   - Whisper或其他ASR服务的API Key和端点
-   - Mem0 API Key
-   - 语音角色和语言偏好设置
+2. 如果不选择使用系统内置的供我测试用的免费AI服务，需要自行配置AI服务：
 
 
 ![AI配置界面](./public/images/api_config.png)
