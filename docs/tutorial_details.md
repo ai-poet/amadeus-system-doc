@@ -65,7 +65,6 @@ networks:
 1. 创建 `.env` 文件，填入所需的基础环境变量：
 ```
 VITE_APP_DEFAULT_USERNAME=你的用户名
-VITE_APP_LOGIN_PASSWORD=你的密码
 WEBRTC_API_URL=你的WebRTC API转发地址
 ```
 
