@@ -10,14 +10,13 @@
 2. 如果你还没有 Zeabur 账号，需要先[注册](https://zeabur.com?referralCode=aipoet)。需要花费$5开通Developer计划,可使用WildCard虚拟信用卡开通,也可直接使用支付宝充值余额支付。
 3. 点击上方按钮一键部署到香港AWS Tokyo区域(注意ASR使用Groq的用户不能部署到香港，否则无法语音识别)，等待部署完成，然后如下图，填写环境变量，最后再点击Networking，生成域名，你就可以通过 Zeabur 提供的域名访问你的应用了
 
-![环境变量配置界面](./public/images/5.png)
+![环境变量配置界面](/images/5.png)
 
 ### 环境变量配置说明
 
 | 环境变量 | 说明 |
 |---------|------|
 | `VITE_APP_DEFAULT_USERNAME` | 用于前端登录系统鉴权的用户名，从而让Amadeus识别你的身份 |
-| `VITE_APP_LOGIN_PASSWORD` | 用于前端登录系统鉴权的密码 |
 | `WEBRTC_API_URL` | WebRTC服务的API转发地址，用于建立实时音视频通信 |
 
 ::: info 其他AI配置
