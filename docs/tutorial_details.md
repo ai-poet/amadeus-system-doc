@@ -101,8 +101,33 @@ docker build -t amadeus-webrtc-service .
 ```bash
 docker run -d --name amadeus-webrtc \
   -p 80:80 -p 443:443 -p 3478:3478 -p 5349:5349 -p 49152-65535:49152-65535/udp \
+  -e LLM_API_KEY=你的OpenAI_API密钥 \
+  -e WHISPER_API_KEY=你的Whisper_API密钥 \
+  -e SILICONFLOW_API_KEY=你的FishAudio_API密钥 \
+  -e LLM_BASE_URL=https://api.ephone.ai/v1 \
+  -e WHISPER_BASE_URL=https://amadeus-ai-api-2.zeabur.app/v1 \
+  -e WHISPER_MODEL=whisper-large-v3 \
+  -e AI_MODEL=gpt-4o \
+  -e MEM0_API_KEY=你的MEM0记忆服务API密钥 \
+  -e TIME_LIMIT=600 \
+  -e CONCURRENCY_LIMIT=10 \
   amadeus-webrtc-service
 ```
+
+### WebRTC服务环境变量说明
+以下是WebRTC服务的内置AI服务的环境变量说明，可以用于搭建公共服务：
+| 环境变量 | 说明 | 默认值 |
+|---------|------|-------|
+| `LLM_API_KEY` | OpenAI或兼容API的密钥，用于大语言模型服务 | 无 |
+| `WHISPER_API_KEY` | Whisper API密钥，用于语音识别服务 | 无 |
+| `SILICONFLOW_API_KEY` | Fish Audio API密钥，用于语音合成服务 | 无 |
+| `LLM_BASE_URL` | 大语言模型API的基础URL | 无 |
+| `WHISPER_BASE_URL` | Whisper API的基础URL | 无 |
+| `WHISPER_MODEL` | 使用的Whisper模型版本 | 无 |
+| `AI_MODEL` | 使用的大语言模型名称 | 无 |
+| `MEM0_API_KEY` | MEM0记忆服务的API密钥 | 无 |
+| `TIME_LIMIT` | WebRTC流的最大时间限制(秒) | 600 |
+| `CONCURRENCY_LIMIT` | 最大并发连接数 | 10 |
 
 ### 端口配置要求
 
