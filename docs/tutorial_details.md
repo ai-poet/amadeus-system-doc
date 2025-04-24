@@ -104,13 +104,13 @@ docker run -d --name amadeus-webrtc \
   -e LLM_API_KEY=你的OpenAI_API密钥 \
   -e WHISPER_API_KEY=你的Whisper_API密钥 \
   -e SILICONFLOW_API_KEY=你的FishAudio_API密钥 \
-  -e LLM_BASE_URL=https://api.ephone.ai/v1 \
-  -e WHISPER_BASE_URL=https://amadeus-ai-api-2.zeabur.app/v1 \
-  -e WHISPER_MODEL=whisper-large-v3 \
-  -e AI_MODEL=gpt-4o \
+  -e LLM_BASE_URL=你的大语言模型API的基础URL \
+  -e WHISPER_BASE_URL=你的Whisper API的基础URL \
+  -e WHISPER_MODEL=你的Whisper模型版本 \
+  -e AI_MODEL=你的大语言模型名称 \
   -e MEM0_API_KEY=你的MEM0记忆服务API密钥 \
-  -e TIME_LIMIT=600 \
-  -e CONCURRENCY_LIMIT=10 \
+  -e TIME_LIMIT=你的WebRTC流的最大时间限制(秒) \
+  -e CONCURRENCY_LIMIT=你的最大并发连接数 \
   amadeus-webrtc-service
 ```
 
