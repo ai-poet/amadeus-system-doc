@@ -115,6 +115,9 @@ docker run -d --name amadeus-webrtc \
   amadeus-webrtc-service
 ```
 
+这样部署后，你就可以通过 http://你的服务器IP:8001 访问你自己的WebRTC服务了。
+
+
 ### WebRTC服务环境变量说明
 以下是WebRTC服务的内置AI服务的环境变量说明，可以用于搭建公共服务：
 
