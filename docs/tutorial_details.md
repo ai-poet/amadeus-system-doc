@@ -8,7 +8,7 @@
 
 1. 点击上方的 "Deploy to Zeabur" 按钮
 2. 如果你还没有 Zeabur 账号，需要先[注册](https://zeabur.com?referralCode=aipoet)。需要花费$5开通Developer计划,可使用WildCard虚拟信用卡开通,也可直接使用支付宝充值余额支付。
-3. 点击上方按钮一键部署到香港AWS Tokyo区域(注意ASR使用Groq的用户不能部署到香港，否则无法语音识别)，等待部署完成，然后如下图，填写环境变量，最后再点击Networking，生成域名，你就可以通过 Zeabur 提供的域名访问你的应用了
+3. 点击上方按钮一键部署到香港AWS区域(注意ASR使用Groq的用户不能部署到香港，否则无法语音识别)，等待部署完成，然后如下图，填写环境变量，最后再点击Networking，生成域名，你就可以通过 Zeabur 提供的域名访问你的应用了
 
 ![环境变量配置界面](/images/5.png)
 
@@ -20,7 +20,7 @@
 | `WEBRTC_API_URL` | WebRTC服务的API转发地址，用于建立实时音视频通信 |
 
 ::: info 其他AI配置
-其余所需AI配置（如OpenAI、Fish Audio、Whisper等）现已移至前端界面填写，用户可以在登录系统后根据需要灵活配置。这种方式更加灵活，避免了重新部署时需要重设环境变量的麻烦。
+其余所需AI配置（如LLM、TTS、ASR等）现已移至前端界面填写，用户可以在登录系统后根据需要灵活配置。这种方式更加灵活，避免了重新部署时需要重设环境变量的麻烦。
 :::
 
 - 确保你的项目符合 Zeabur 的部署要求
@@ -84,7 +84,7 @@ docker-compose logs -f
 
 ## 自行部署WebRTC服务
 
-如果不使用我在Zeabur模板中提供的我自行部署的WebRTC服务，也可以单独自行部署WebRTC服务。
+我在Zeabur模板中提供了我自行部署的公共WebRTC服务，公共服务可能会不稳定，建议单独自行私有化部署WebRTC服务。
 
 ### Docker方式部署WebRTC
 
@@ -103,7 +103,8 @@ docker run -d --name amadeus-webrtc \
   -p 8001:8001 \
   -e LLM_API_KEY=你的OpenAI_API密钥 \
   -e WHISPER_API_KEY=你的Whisper_API密钥 \
-  -e SILICONFLOW_API_KEY=你的FishAudio_API密钥 \
+  -e SILICONFLOW_API_KEY=你的硅基流动API密钥 \
+  -e SILICONFLOW_VOICE=你的硅基流动语音ID \
   -e LLM_BASE_URL=你的大语言模型API的基础URL \
   -e WHISPER_BASE_URL=你的Whisper API的基础URL \
   -e WHISPER_MODEL=你的Whisper模型版本 \
@@ -116,11 +117,13 @@ docker run -d --name amadeus-webrtc \
 
 ### WebRTC服务环境变量说明
 以下是WebRTC服务的内置AI服务的环境变量说明，可以用于搭建公共服务：
+
 | 环境变量 | 说明 | 默认值 |
 |---------|------|-------|
 | `LLM_API_KEY` | OpenAI或兼容API的密钥，用于大语言模型服务 | 无 |
 | `WHISPER_API_KEY` | Whisper API密钥，用于语音识别服务 | 无 |
-| `SILICONFLOW_API_KEY` | Fish Audio API密钥，用于语音合成服务 | 无 |
+| `SILICONFLOW_API_KEY` | 硅基流动API密钥，用于语音合成服务 | 无 |
+| `SILICONFLOW_VOICE` | 硅基流动你自定义的语音ID | 无 |
 | `LLM_BASE_URL` | 大语言模型API的基础URL | 无 |
 | `WHISPER_BASE_URL` | Whisper API的基础URL | 无 |
 | `WHISPER_MODEL` | 使用的Whisper模型版本 | 无 |

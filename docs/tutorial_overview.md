@@ -105,10 +105,10 @@
 
 ## 技术栈
 - React 客户端界面
-- WebRTC 实现实时通信和音视频传输，以及实现核心的AI业务逻辑，采用 FastRTC 开源框架
+- WebRTC 实现实时通信和音视频传输，以及实现核心的AI业务逻辑，采用 FastRTC 开源框架，使用Python Flask提供接口
 - ASR 语音识别
 - Claude 3.7 负责角色对话生成
 - GPT-4o mini 处理其它认知任务
-- Fish Audio 确保音频质量
+- CosyVoice2 确保音频质量
 - Mem0 提供记忆存储系统
 - Node Express 提供后端服务转发
