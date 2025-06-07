@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Amadeus System Private Deployment Guide"
   text: "Multimodal AI Companion System"
-  tagline: Integrating Live2D, ASR, Claude 3.7, and Mem0 Memory System
+  tagline: Integrating Live2D, ASR, Claude Series, and Mem0 Memory System
   actions:
     - theme: brand
       text: Tutorial

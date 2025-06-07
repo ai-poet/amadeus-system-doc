@@ -13,7 +13,7 @@ After successful login, the system will guide you through the initial configurat
 ### 1. AI Service Configuration
 
 Configure your AI service APIs:
-- **LLM API**: Claude 3.7 or OpenAI API
+- **LLM API**: Claude Series or OpenAI API
 - **ASR API**: Speech recognition service
 - **TTS API**: Text-to-speech service
 - **Mem0 API**: Memory storage service

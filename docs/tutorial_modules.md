@@ -16,7 +16,7 @@
 
 ## 必需的 API 服务
 
-### 1. Claude 3.7 和 OpenAI API
+### 1. Claude 系列模型 和 OpenAI API
 - 有效的 API Key和端点
 
 ### 2. Groq API(国外用户首选) 或者硅基流动 API(国内用户首选)

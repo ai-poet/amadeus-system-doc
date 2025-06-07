@@ -26,8 +26,8 @@ By combining multiple AI technologies such as speech recognition, natural langua
    |                  |        |      |                  |
 +--+---+        +----+----+   |  +---+-------+    +-----+-----+
 |Speech|        |         |   |  |           |    |           |
-|Input +------->| Claude  |<--+--+  GPT-4o   |<-->|   Mem0    |
-|Module|        |  3.7    |<-+   |   mini    |    |           |
+|Input +------->| Claude  |<--+--+ GPT-4.1   |<-->|   Mem0    |
+|Module|        | Series  |<-+   |   nano    |    |           |
 +--+---+        +----+----+  |   +-----------+    +-----------+
    |                 |       |
    |                 v       |
@@ -64,16 +64,14 @@ By combining multiple AI technologies such as speech recognition, natural langua
 - Real-time voice interaction, creating authentic conversational experiences
 
 ### 3. AI Processing Core
-- **Claude 3.7**: 
+- **Claude Series Large Models**: 
   - Responsible for character dialogue generation and processing
   - Ensures responses align with character settings
   - Maintains dialogue coherence and logic
   
-- **GPT-4o mini**:
-  - Deep emotional analysis and understanding
-  - Character memory management and retrieval
+- **GPT-4.1 nano**:
+  - Emotional analysis and understanding
   - Proactive topic guidance and interaction
-  - Complex scenario understanding and response
 
 ### 4. Memory System
 - Deep memory storage based on Mem0
@@ -107,8 +105,7 @@ By combining multiple AI technologies such as speech recognition, natural langua
 - React client interface
 - WebRTC for real-time communication and audio/video transmission, and core AI business logic implementation, using FastRTC open-source framework, with Python Flask providing interfaces
 - ASR speech recognition
-- Claude 3.7 for character dialogue generation
-- GPT-4o mini for other cognitive tasks
+- Claude Series Large Models for character dialogue generation
+- GPT-4.1 nano for small classification tasks
 - CosyVoice2 for audio quality assurance
 - Mem0 providing memory storage system
-- Node Express providing backend service forwarding

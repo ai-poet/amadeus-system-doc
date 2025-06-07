@@ -16,7 +16,7 @@ This project requires the following services and accounts to run completely. Ple
 
 ## Required API Services
 
-### 1. Claude 3.7 and OpenAI API
+### 1. Claude Series and OpenAI API
 - Valid API Key and endpoint
 
 ### 2. Groq API (preferred for overseas users) or Silicon Flow API (preferred for domestic users)
