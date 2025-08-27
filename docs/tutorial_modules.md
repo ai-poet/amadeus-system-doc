@@ -10,19 +10,18 @@
   - 带宽：最低10Mbps
   - 系统：Ubuntu 20.04 或更新版本
 - 一个 Zeabur 账号
-  - 用于部署 WebSocket 服务器
+  - 用于部署 WebRTC 服务器
   - 可以获得更好的延迟体验
 :::
 
 ## 必需的 API 服务
 
-### 1. Claude 3.5 和 OpenAI API
+### 1. Claude 系列模型 和 OpenAI API
 - 有效的 API Key和端点
 
-### 2. Groq API
+### 2. Groq API(国外用户首选) 或者硅基流动 API(国内用户首选)
 - 用于语音识别服务
-- 有效的 Groq 账号和API Key
-- 免费调用频次：20次/min
+- 有效的账号和API Key
 
 ### 3. Mem0 API
 - 用于记忆存储服务
@@ -31,6 +30,10 @@
 ### 4. Fish Audio API
 - 用于语音克隆服务
 - 有效的 Fish Audio 账号和API Key
+
+### 5. FastRTC
+- 用于实时音视频通信
+- 需要配置相应的信令服务器
 
 ## 注意事项
 
